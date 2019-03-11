@@ -6,7 +6,7 @@
 /*   By: cpalmier <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/21 18:13:49 by cpalmier          #+#    #+#             */
-/*   Updated: 2019/03/03 18:49:01 by mpasquie         ###   ########.fr       */
+/*   Updated: 2019/03/11 19:50:26 by cpalmier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,6 +107,8 @@ typedef struct	s_env
 	int		h_mur;
 	int		h_regard;
 	float	lim;
+	float	lim_sol;
+	double	h_ref;
 	int		orientation;
 	t_coord	coord_mur;
 	int		img_x;
@@ -153,7 +155,6 @@ void			quadrillage(t_env *env);
 void			put_pxl_img(t_env *env, int x, int y, int color);
 void			clean_img(t_env *env);
 void			color_case(t_env *env);
-void			cercle(t_env *env, t_cercle param);
 void			print_cercle(t_env *env);
 double			detection_mur(t_env *env);
 int				init_var_hor(t_env *env, double *ya, double *xa, t_coord *c1);

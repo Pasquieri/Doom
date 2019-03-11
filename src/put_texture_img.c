@@ -6,7 +6,7 @@
 /*   By: cpalmier <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/28 16:49:23 by cpalmier          #+#    #+#             */
-/*   Updated: 2019/02/28 21:36:15 by cpalmier         ###   ########.fr       */
+/*   Updated: 2019/03/11 19:09:36 by cpalmier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,13 +18,11 @@ void	put_texture_img(t_env *env, double h_percue, int y, t_text *texture)
 	float	pourcent_y;
 	int		i;
 	int		j;
-	int		tmp;
 
 	if (env->orientation == 1)
-		tmp = ((int)(env->coord_mur.x * 100000) % (env->coef * 100000));
+		pourcent_x = fmod(env->coord_mur.x, (float)env->coef) * 100 / env->coef;
 	else
-		tmp = ((int)(env->coord_mur.y * 100000) % (env->coef * 100000));
-	pourcent_x = ((float)tmp / 100000.) * 100 / env->coef;
+		pourcent_x = fmod(env->coord_mur.y, env->coef) * 100 / env->coef;
 	if (y > (env->h_regard - (h_percue / 2)))
 		pourcent_y = (y - (env->h_regard - (h_percue / 2.))) * 100. / h_percue;
 	else
