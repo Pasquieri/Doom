@@ -6,7 +6,7 @@
 /*   By: cpalmier <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/21 18:13:49 by cpalmier          #+#    #+#             */
-/*   Updated: 2019/03/11 19:50:26 by cpalmier         ###   ########.fr       */
+/*   Updated: 2019/03/13 18:31:07 by cpalmier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 # include "../minilibx/mlx.h"
 # include <math.h>
 # include <fcntl.h>
+# include <stdio.h>
 
 typedef struct	s_coord
 {
@@ -49,6 +50,14 @@ typedef struct	s_fill
 	int		k;
 }				t_fill;
 
+typedef struct	s_rgb
+{
+	int		b;
+	int		g;
+	int		r;
+	int		a;
+}				t_rgb;
+
 typedef struct	s_color_menu
 {
 	int		black_color;
@@ -61,7 +70,7 @@ typedef struct	s_color_menu
 	int		map4_color;
 }				t_color_menu;
 
-typedef struct	s_text
+typedef struct	s_mlx
 {
 	void	*img;
 	char	*img_str;
@@ -70,23 +79,13 @@ typedef struct	s_text
 	int		end;
 	int		width;
 	int		height;
-}				t_text;
+}				t_mlx;
 
 typedef struct	s_env
 {
-	void	*imgmenu;
 	void	*mlx;
 	void	*win;
-	void	*img;
-	char	*img_str;
-	int		bpp;
-	int		s_l;
-	int		end;
-	void	*img2;
-	char	*img_str2;
-	int		bpp2;
-	int		s_l2;
-	int		end2;
+	t_mlx	m[2];
 	int		coef;
 	int		map_on;
 	int		x;
@@ -112,21 +111,16 @@ typedef struct	s_env
 	int		orientation;
 	t_coord	coord_mur;
 	int		img_x;
-	t_text	texture1;
-	t_text	texture2;
-	t_text	texture3;
-	t_text	texture4;
-	t_text	texture5;
-	t_text	texture6;
-	t_text	text_menu;
+	t_rgb	rgb[10];
+	t_mlx	text[6];
+	t_mlx	sp[1];
 	_Bool	key[604];
 }				t_env;
 
-void			exec_calcul(t_env *env, int d_regard);
+void			exec_calcul(t_env *env, int d_regard, int init);
 void			arrow_menu(t_env *env);
 void			key_invalid_menu(t_env *env);
 void			key_valid_menu(t_env *env);
-void			menu_off(t_env *env);
 int				trig_press(t_env *env);
 int				key_press(int key, t_env *env);
 int				key_release(int key, t_env *env);
@@ -150,6 +144,7 @@ int				error_message(int num, t_env *env);
 void			open_menu(t_env *env);
 int				pars_init(int argc, char **argv, t_env *var_check);
 void			init_env(t_env *env);
+void			init_rgb(t_env *env);
 int				ft_trace_seg(t_env *env, t_coord coord1, t_coord coord2);
 void			quadrillage(t_env *env);
 void			put_pxl_img(t_env *env, int x, int y, int color);
@@ -169,6 +164,7 @@ void			affichage_mur(t_env *env);
 void			deplacements(t_env *env);
 void			depla_horizontal(t_env *env, int key);
 void			depla_vertical(t_env *env, int key);
-void			put_texture_img(t_env *env, double h_per, int y, t_text *text);
+void			put_texture_img(t_env *env, double h_per, int y, t_mlx *text);
 void			init_texture(t_env *env);
+void			print_sprite(t_env *env);
 #endif

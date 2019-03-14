@@ -6,7 +6,7 @@
 /*   By: cpalmier <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/21 17:27:02 by cpalmier          #+#    #+#             */
-/*   Updated: 2019/03/11 19:18:24 by cpalmier         ###   ########.fr       */
+/*   Updated: 2019/03/13 17:50:23 by cpalmier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,13 +28,13 @@ static int		affichage_ciel(double h_percue, t_env *env, int x, float y)
 	while (++y < lim && y < 870.)
 	{
 		pourcent_y = (100. * y) / (870.);
-		i = 4 * x + y * env->s_l;
-		j = 4 * (int)(env->texture5.width * pourcent_x / 100)
-			+ (int)(env->texture5.height * (pourcent_y + (100 - (env->h_regard
-								* 100 / 870.))) / 100) * env->texture5.s_l;
-		env->img_str[i] = env->texture5.img_str[j];
-		env->img_str[i + 1] = env->texture5.img_str[j + 1];
-		env->img_str[i + 2] = env->texture5.img_str[j + 2];
+		i = 4 * x + y * env->m[0].s_l;
+		j = 4 * (int)(env->text[5].width * pourcent_x / 100)
+			+ (int)(env->text[5].height * (pourcent_y + (100 - (env->h_regard
+								* 100 / 870.))) / 100) * env->text[5].s_l;
+		env->m[0].img_str[i] = env->text[5].img_str[j];
+		env->m[0].img_str[i + 1] = env->text[5].img_str[j + 1];
+		env->m[0].img_str[i + 2] = env->text[5].img_str[j + 2];
 	}
 	return (y - 1);
 }
@@ -45,9 +45,9 @@ static int	affichage_mur_h(float a, float y, t_env *env, double h_percue)
 
 	lim = env->lim_sol;
 	while (a >= 0. && a < 180. && ++y < lim && y < 870.)
-		put_texture_img(env, h_percue, y, &env->texture1);
+		put_texture_img(env, h_percue, y, &env->text[1]);
 	while (!(a >= 0. && a < 180.) && ++y < lim && y < 870.)
-		put_texture_img(env, h_percue, y, &env->texture2);
+		put_texture_img(env, h_percue, y, &env->text[2]);
 	return (y);
 }
 
@@ -57,9 +57,9 @@ static int	affichage_mur_v(float a, float y, t_env *env, double h_percue)
 
 	lim = env->lim_sol;
 	while (a >= 90. && a < 270. && ++y < lim && y < 870.)
-		put_texture_img(env, h_percue, y, &env->texture3);
+		put_texture_img(env, h_percue, y, &env->text[3]);
 	while (!(a >= 90. && a < 270.) && ++y < lim && y < 870.)
-		put_texture_img(env, h_percue, y, &env->texture4);
+		put_texture_img(env, h_percue, y, &env->text[4]);
 	return (y);
 }
 

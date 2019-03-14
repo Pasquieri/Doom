@@ -6,7 +6,7 @@
 /*   By: mpasquie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/03 13:45:50 by mpasquie          #+#    #+#             */
-/*   Updated: 2019/03/03 18:29:35 by cpalmier         ###   ########.fr       */
+/*   Updated: 2019/03/13 16:53:11 by cpalmier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,21 +19,21 @@ static void	key_menu_extra(t_env *env)
 		if (re_pars("./map/map.2", env) == -1)
 			env->menu = 1;
 		else
-			exec_calcul(env, 180);
+			exec_calcul(env, 180, 1);
 	}
 	if (env->menu_select == 4)
 	{
 		if (re_pars("./map/map.3", env) == -1)
 			env->menu = 1;
 		else
-			exec_calcul(env, 225);
+			exec_calcul(env, 225, 1);
 	}
 	if (env->menu_select == 5)
 	{
 		if (re_pars("./map/map.4", env) == -1)
 			env->menu = 1;
 		else
-			exec_calcul(env, 0);
+			exec_calcul(env, 0, 1);
 	}
 	if (env->menu == 1)
 		open_menu(env);
@@ -49,7 +49,7 @@ void		key_invalid_menu(t_env *env)
 		if (re_pars("./map/map.1", env) == -1)
 			env->menu = 1;
 		else
-			exec_calcul(env, 0);
+			exec_calcul(env, 0, 1);
 	}
 	key_menu_extra(env);
 }
@@ -62,7 +62,7 @@ void		key_valid_menu(t_env *env)
 		if (re_pars("./map/map.1", env) == -1)
 			env->menu = 1;
 		else
-			exec_calcul(env, 0);
+			exec_calcul(env, 0, 1);
 	}
 	key_menu_extra(env);
 }
@@ -77,6 +77,6 @@ int			trig_press(t_env *env)
 				|| env->key[126]) && !env->menu)
 		rotation_regard(env);
 	if (!env->menu)
-		menu_off(env);
+		exec_calcul(env, 0, 0);
 	return (0);
 }

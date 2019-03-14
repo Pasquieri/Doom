@@ -6,7 +6,7 @@
 /*   By: cpalmier <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/21 17:57:03 by cpalmier          #+#    #+#             */
-/*   Updated: 2019/03/03 14:41:41 by mpasquie         ###   ########.fr       */
+/*   Updated: 2019/03/13 16:41:33 by cpalmier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,9 @@ int			main(int ac, char **av)
 		return (0);
 	env.map_entree = -1;
 	env.menu = 0;
+	init_rgb(&env);
 	if (pars_init(ac, av, &env) == 0)
-		exec_calcul(&env, 0);
+		exec_calcul(&env, 0, 1);
 	env.menu = 1;
 	env.menu_select = 1;
 	open_menu(&env);

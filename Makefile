@@ -2,7 +2,7 @@ NAME = wolf3D
 
 SRC = src/ft_trace_seg.c src/main.c src/put_pxl_img.c\
 	  src/mini_map.c src/init_env.c src/detec_first_inter.c\
-	  src/detection_mur.c src/clean_img.c src/detection_mur_horizontal.c\
+	  src/detection_mur.c src/detection_mur_horizontal.c\
 	  src/detection_mur_vertical.c src/affichage_mur.c\
 	  src/deplacements.c src/deplacements_extra.c src/menu_open.c\
 	  src/error_message.c src/fill_tab_extra.c src/wall_row.c\
@@ -11,7 +11,7 @@ SRC = src/ft_trace_seg.c src/main.c src/put_pxl_img.c\
 	  src/check_open_map.c src/pars.c src/put_texture_img.c\
 	  src/init_texture.c src/motion_notify.c src/win_init.c\
 	  src/rotation_regard.c src/key_apply.c src/trig_press.c\
-	  src/menu_off.c src/menu_arrow.c src/exec_calcul.c
+	  src/menu_arrow.c src/exec_calcul.c src/print_sprite.c
 
 HEADER = -Ilibft -Iinclude
 

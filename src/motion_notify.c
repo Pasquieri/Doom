@@ -6,7 +6,7 @@
 /*   By: mpasquie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/03 13:43:26 by mpasquie          #+#    #+#             */
-/*   Updated: 2019/03/03 13:44:02 by mpasquie         ###   ########.fr       */
+/*   Updated: 2019/03/13 16:46:24 by cpalmier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,13 +29,6 @@ int		motion_notify(int x, int y, t_env *env)
 	env->d_regard = env->d_regard % 360;
 	if (env->d_regard < 0)
 		env->d_regard = env->d_regard + 360;
-	clean_img(env);
-	affichage_mur(env);
-	color_case(env);
-	quadrillage(env);
-	print_cercle(env);
-	mlx_put_image_to_window(env->mlx, env->win, env->img, 0, 0);
-	if (env->map_on == 1)
-		mlx_put_image_to_window(env->mlx, env->win, env->img2, 960, 20);
+	exec_calcul(env, 0, 0);
 	return (0);
 }

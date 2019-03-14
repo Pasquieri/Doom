@@ -6,7 +6,7 @@
 /*   By: mpasquie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/01 15:26:07 by mpasquie          #+#    #+#             */
-/*   Updated: 2019/03/11 19:41:55 by cpalmier         ###   ########.fr       */
+/*   Updated: 2019/03/13 17:41:07 by cpalmier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,8 +59,8 @@ int		verif_char(char *str, t_env *env)
 				return (error_message(7, env));
 			}
 		}
-		if ((str[x] != '\0') && (str[x] != ' ') && ((str[x] >= 48)
-					&& (str[x] <= 39) && (str[x] != '\n') && (str[x] != '\t')))
+		if ((str[x] != '\0') && (str[x] != ' ') && ((str[x] <= 48)
+					&& (str[x] >= 57) && (str[x] != '\n') && (str[x] != '\t')))
 		{
 			free(str);
 			return (error_message(7, env));
