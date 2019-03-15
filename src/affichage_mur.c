@@ -6,7 +6,7 @@
 /*   By: cpalmier <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/21 17:27:02 by cpalmier          #+#    #+#             */
-/*   Updated: 2019/03/15 20:54:58 by cpalmier         ###   ########.fr       */
+/*   Updated: 2019/03/15 21:42:42 by cpalmier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,12 +28,12 @@ static int		affichage_ciel(double h_percue, t_env *env, int x, float y)
 	{
 		pourcent_y = (100. * y) / (870.);
 		i = 4 * x + y * env->m[0].s_l;
-		j = 4 * (int)(env->text[5].width * pourcent_x / 100)
-			+ (int)(env->text[5].height * (pourcent_y + (100 - (env->h_regard
-								* 100 / 870.))) / 100) * env->text[5].s_l;
-		env->m[0].img_str[i] = env->text[5].img_str[j];
-		env->m[0].img_str[i + 1] = env->text[5].img_str[j + 1];
-		env->m[0].img_str[i + 2] = env->text[5].img_str[j + 2];
+		j = 4 * (int)(env->text[2].width * pourcent_x / 100)
+			+ (int)(env->text[2].height * (pourcent_y + (100 - (env->h_regard
+								* 100 / 870.))) / 100) * env->text[2].s_l;
+		env->m[0].img_str[i] = env->text[2].img_str[j];
+		env->m[0].img_str[i + 1] = env->text[2].img_str[j + 1];
+		env->m[0].img_str[i + 2] = env->text[2].img_str[j + 2];
 	}
 	return (y - 1);
 }

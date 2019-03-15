@@ -6,7 +6,7 @@
 /*   By: cpalmier <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/21 18:13:49 by cpalmier          #+#    #+#             */
-/*   Updated: 2019/03/15 20:47:52 by cpalmier         ###   ########.fr       */
+/*   Updated: 2019/03/15 21:40:35 by cpalmier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -124,7 +124,7 @@ typedef struct	s_env
 	double	h_ref; // test
 
 	t_rgb	rgb[10];
-	t_mlx	text[6];
+	t_mlx	text[10];
 	t_mlx	sp[2];
 	t_inv	inv;
 	_Bool	key[604];

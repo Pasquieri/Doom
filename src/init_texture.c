@@ -6,7 +6,7 @@
 /*   By: cpalmier <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/01 20:15:32 by cpalmier          #+#    #+#             */
-/*   Updated: 2019/03/15 21:19:58 by cpalmier         ###   ########.fr       */
+/*   Updated: 2019/03/15 21:42:10 by cpalmier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,8 @@ void	init_texture(t_env *env)
 	env->text[1].img_str = mlx_get_data_addr(env->text[1].img,
 		&env->text[1].bpp, &env->text[1].s_l, &env->text[1].end);
 	env->text[2].img = mlx_xpm_file_to_image(env->mlx,
-		"Doom_textures/doom_texture_xpm/2-wallWhite.XPM", &env->text[2].width, &env->text[2].height);
+		"textures/ciel.XPM",
+		&env->text[2].width, &env->text[2].height);
 	env->text[2].img_str = mlx_get_data_addr(env->text[2].img,
 		&env->text[2].bpp, &env->text[2].s_l, &env->text[2].end);
 	env->text[3].img = mlx_xpm_file_to_image(env->mlx,
@@ -28,12 +29,33 @@ void	init_texture(t_env *env)
 	env->text[3].img_str = mlx_get_data_addr(env->text[3].img,
 		&env->text[3].bpp, &env->text[3].s_l, &env->text[3].end);
 	env->text[4].img = mlx_xpm_file_to_image(env->mlx,
-		"Doom_textures/doom_texture_xpm/2-wallWhite.XPM",
+		"Doom_textures/doom_texture_xpm/1-sol_sable.XPM",
 		&env->text[4].width, &env->text[4].height);
 	env->text[4].img_str = mlx_get_data_addr(env->text[4].img,
 		&env->text[4].bpp, &env->text[4].s_l, &env->text[4].end);
 	env->text[5].img = mlx_xpm_file_to_image(env->mlx,
-		"textures/ciel.XPM", &env->text[5].width, &env->text[5].height);
+		"Doom_textures/doom_texture_xpm/2-floor_labo.XPM",
+		&env->text[5].width, &env->text[5].height);
 	env->text[5].img_str = mlx_get_data_addr(env->text[5].img,
 		&env->text[5].bpp, &env->text[5].s_l, &env->text[5].end);
+	env->text[6].img = mlx_xpm_file_to_image(env->mlx,
+		"Doom_textures/doom_texture_xpm/door.XPM",
+		&env->text[6].width, &env->text[6].height);
+	env->text[6].img_str = mlx_get_data_addr(env->text[6].img,
+		&env->text[6].bpp, &env->text[6].s_l, &env->text[6].end);
+	env->text[7].img = mlx_xpm_file_to_image(env->mlx,
+		"Doom_textures/doom_texture_xpm/grid.XPM",
+		&env->text[7].width, &env->text[7].height);
+	env->text[7].img_str = mlx_get_data_addr(env->text[7].img,
+		&env->text[7].bpp, &env->text[7].s_l, &env->text[7].end);
+	env->text[8].img = mlx_xpm_file_to_image(env->mlx,
+		"Doom_textures/doom_texture_xpm/window.XPM",
+		&env->text[8].width, &env->text[8].height);
+	env->text[8].img_str = mlx_get_data_addr(env->text[8].img,
+		&env->text[8].bpp, &env->text[8].s_l, &env->text[8].end);
+	env->text[9].img = mlx_xpm_file_to_image(env->mlx,
+		"Doom_textures/doom_texture_xpm/2-wallWhite.XPM",
+		&env->text[9].width, &env->text[9].height);
+	env->text[9].img_str = mlx_get_data_addr(env->text[9].img,
+		&env->text[9].bpp, &env->text[9].s_l, &env->text[9].end);
 }

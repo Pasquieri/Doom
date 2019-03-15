@@ -39,3 +39,15 @@ shift_r = 258
 
 L = 37
 K = 40
+
+/**************** Nombre murs ********************/
+0 : rien
+1 : mur pierre gris
+2 : mur blanc // 9 pour les tests
+3 : mur bleu
+4 : sol sable
+5 : floor labo
+6 : door
+7 : grid
+8 : window
+9 : ciel // 2 pour les tests sans le parceur
