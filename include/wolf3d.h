@@ -6,7 +6,7 @@
 /*   By: cpalmier <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/21 18:13:49 by cpalmier          #+#    #+#             */
-/*   Updated: 2019/03/15 16:45:38 by cpalmier         ###   ########.fr       */
+/*   Updated: 2019/03/15 20:47:52 by cpalmier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ typedef struct	s_coord
 {
 	float	x;
 	float	y;
+	int		nb;
 }				t_coord;
 
 typedef struct	s_cercle
@@ -113,6 +114,7 @@ typedef struct	s_env
 	float	d_ecran;
 	int		h_mur;
 	t_coord	coord_mur;
+	int		wall_nb;
 	int		img_x;
 	int		h_regard;
 	float	lim;

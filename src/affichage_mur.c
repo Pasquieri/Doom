@@ -6,7 +6,7 @@
 /*   By: cpalmier <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/21 17:27:02 by cpalmier          #+#    #+#             */
-/*   Updated: 2019/03/14 17:44:57 by cpalmier         ###   ########.fr       */
+/*   Updated: 2019/03/15 20:54:58 by cpalmier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,31 +38,17 @@ static int		affichage_ciel(double h_percue, t_env *env, int x, float y)
 	return (y - 1);
 }
 
-static int	affichage_mur_h(float a, float y, t_env *env, double h_percue)
+static int		affichage_wall(float y, t_env *env, double h_percue)
 {
 	float	lim;
 
 	lim = env->lim_sol;
-	while (a >= 0. && a < 180. && ++y < lim && y < 870.)
-		put_texture_img(env, h_percue, y, &env->text[1]);
-	while (!(a >= 0. && a < 180.) && ++y < lim && y < 870.)
-		put_texture_img(env, h_percue, y, &env->text[2]);
+	while (++y < lim && y < 870.)
+		put_texture_img(env, h_percue, y, &env->text[env->wall_nb + 1]); // +1 car 0 = mur or text[0] = menu
 	return (y);
 }
 
-static int	affichage_mur_v(float a, float y, t_env *env, double h_percue)
-{
-	float	lim;
-
-	lim = env->lim_sol;
-	while (a >= 90. && a < 270. && ++y < lim && y < 870.)
-		put_texture_img(env, h_percue, y, &env->text[3]);
-	while (!(a >= 90. && a < 270.) && ++y < lim && y < 870.)
-		put_texture_img(env, h_percue, y, &env->text[4]);
-	return (y);
-}
-
-static void		affichage(double h_percue, t_env *env, int x, float a)
+static void		affichage(double h_percue, t_env *env, int x)
 {
 	float	y;
 	float	lim;
@@ -71,10 +57,21 @@ static void		affichage(double h_percue, t_env *env, int x, float a)
 	y = affichage_ciel(h_percue, env, x, y);
 //	lim = (env->h_regard + (h_percue / 2));
 	lim = env->lim_sol;
-	if (env->orientation == 1)
-		y = affichage_mur_h(a, y, env, h_percue);
+/*	if (env->orientation == 1)
+	{
+		while (a >= 0. && a < 180. && ++y < lim && y < 870.)
+			put_texture_img(env, h_percue, y, &env->text[1]);
+		while (!(a >= 0. && a < 180.) && ++y < lim && y < 870.)
+			put_texture_img(env, h_percue, y, &env->text[2]);
+	}
 	else if (env->orientation == 2)
-		y = affichage_mur_v(a, y, env, h_percue);
+	{
+		while (a >= 90. && a < 270. && ++y < lim && y < 870.)
+			put_texture_img(env, h_percue, y, &env->text[3]);
+		while (!(a >= 90. && a < 270.) && ++y < lim && y < 870.)
+			put_texture_img(env, h_percue, y, &env->text[4]);
+	}*/
+	y = affichage_wall(y, env, h_percue);
 	y -= 2;
 	while (++y < 870.)
 		put_pxl_img(env, x, y, 7);
@@ -119,7 +116,7 @@ void			affichage_mur(t_env *env)
 		//env->lim_sol = env->h_regard + ((env->d_ecran * (env->coef / dist)) / 2);
 		env->lim_sol = env->h_regard + (env->h_ref / 2);
 		env->img_x = x;
-		affichage(h_percue, env, x, env->angle);
+		affichage(h_percue, env, x);
 		a -= (60. / (env->nb_colonne));
 		x++;
 	}

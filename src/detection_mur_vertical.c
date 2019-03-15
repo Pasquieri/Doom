@@ -6,7 +6,7 @@
 /*   By: cpalmier <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/21 17:47:17 by cpalmier          #+#    #+#             */
-/*   Updated: 2019/03/14 16:24:32 by cpalmier         ###   ########.fr       */
+/*   Updated: 2019/03/15 20:52:46 by cpalmier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,13 +104,22 @@ int			verif_ver(t_env *env, t_coord *coord)
 	if (i < env->x && j < env->x)
 	{
 		if (env->tab[j][i] != 1)
+		{
+			coord->nb = env->tab[j][i];
 			return (1);
+		}
 		i = ((coord->x) + 1) / env->coef;
 		if (env->tab[j][i] != 1)
+		{
+			coord->nb = env->tab[j][i];
 			return (1);
+		}
 		i = ((coord->x) - 1) / env->coef;
 		if (env->tab[j][i] != 1)
+		{
+			coord->nb = env->tab[j][i];
 			return (1);
+		}
 	}
 	return (0);
 }

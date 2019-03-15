@@ -6,7 +6,7 @@
 /*   By: cpalmier <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/01 20:15:32 by cpalmier          #+#    #+#             */
-/*   Updated: 2019/03/14 17:52:49 by cpalmier         ###   ########.fr       */
+/*   Updated: 2019/03/15 21:19:58 by cpalmier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,20 +15,20 @@
 void	init_texture(t_env *env)
 {
 	env->text[1].img = mlx_xpm_file_to_image(env->mlx,
-		"textures/marbre_blanc.XPM", &env->text[1].width, &env->text[1].height);
+		"Doom_textures/doom_texture_xpm/1-mur_pierre.XPM", &env->text[1].width, &env->text[1].height);
 	env->text[1].img_str = mlx_get_data_addr(env->text[1].img,
 		&env->text[1].bpp, &env->text[1].s_l, &env->text[1].end);
 	env->text[2].img = mlx_xpm_file_to_image(env->mlx,
-		"textures/plante.XPM", &env->text[2].width, &env->text[2].height);
+		"Doom_textures/doom_texture_xpm/2-wallWhite.XPM", &env->text[2].width, &env->text[2].height);
 	env->text[2].img_str = mlx_get_data_addr(env->text[2].img,
 		&env->text[2].bpp, &env->text[2].s_l, &env->text[2].end);
 	env->text[3].img = mlx_xpm_file_to_image(env->mlx,
-		"textures/planche_bois.XPM",
+		"Doom_textures/doom_texture_xpm/3-mur_pierre_bleu.XPM",
 		&env->text[3].width, &env->text[3].height);
 	env->text[3].img_str = mlx_get_data_addr(env->text[3].img,
 		&env->text[3].bpp, &env->text[3].s_l, &env->text[3].end);
 	env->text[4].img = mlx_xpm_file_to_image(env->mlx,
-		"textures/carrelage_noir.XPM",
+		"Doom_textures/doom_texture_xpm/2-wallWhite.XPM",
 		&env->text[4].width, &env->text[4].height);
 	env->text[4].img_str = mlx_get_data_addr(env->text[4].img,
 		&env->text[4].bpp, &env->text[4].s_l, &env->text[4].end);
