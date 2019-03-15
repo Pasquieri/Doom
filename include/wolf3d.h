@@ -6,7 +6,7 @@
 /*   By: cpalmier <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/21 18:13:49 by cpalmier          #+#    #+#             */
-/*   Updated: 2019/03/13 18:31:07 by cpalmier         ###   ########.fr       */
+/*   Updated: 2019/03/15 16:45:38 by cpalmier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,40 +81,52 @@ typedef struct	s_mlx
 	int		height;
 }				t_mlx;
 
+typedef struct	s_inv
+{
+	int		lim_gun[5];
+	_Bool	gun;
+}				t_inv;
+
 typedef struct	s_env
 {
 	void	*mlx;
 	void	*win;
 	t_mlx	m[2];
+
 	int		coef;
-	int		map_on;
 	int		x;
 	int		y;
 	int		**tab;
 	int		d_regard;
 	double	angle;
-	int		detail;
-	int		x_init;
-	int		y_init;
 	int		perso_x;
 	int		perso_y;
+	int		x_init; // a supp
+	int		y_init; // a supp 
+
+	int		detail;
 	int		menu;
 	int		menu_select;
 	int		map_entree;
+
 	int		nb_colonne;
 	float	d_ecran;
 	int		h_mur;
-	int		h_regard;
-	float	lim;
-	float	lim_sol;
-	double	h_ref;
-	int		orientation;
 	t_coord	coord_mur;
 	int		img_x;
+	int		h_regard;
+	float	lim;
+	int		orientation; // cardinaux texture a supp
+
+	float	lim_sol; // test
+	double	h_ref; // test
+
 	t_rgb	rgb[10];
 	t_mlx	text[6];
-	t_mlx	sp[1];
+	t_mlx	sp[2];
+	t_inv	inv;
 	_Bool	key[604];
+	int		musique;
 }				t_env;
 
 void			exec_calcul(t_env *env, int d_regard, int init);
@@ -167,4 +179,5 @@ void			depla_vertical(t_env *env, int key);
 void			put_texture_img(t_env *env, double h_per, int y, t_mlx *text);
 void			init_texture(t_env *env);
 void			print_sprite(t_env *env);
+void			print_gun(t_env *env, int k);
 #endif

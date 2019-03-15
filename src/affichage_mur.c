@@ -6,7 +6,7 @@
 /*   By: cpalmier <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/21 17:27:02 by cpalmier          #+#    #+#             */
-/*   Updated: 2019/03/13 17:50:23 by cpalmier         ###   ########.fr       */
+/*   Updated: 2019/03/14 17:44:57 by cpalmier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@ static int		affichage_ciel(double h_percue, t_env *env, int x, float y)
 
 	y = -1;
 	lim = (env->h_regard - (h_percue / 2));
-//	lim = env->h_regard - fabs(h_percue - fabs(env->h_regard - env->lim_sol));
 	pourcent_x = (100. * x) / env->nb_colonne;
 	while (++y < lim && y < 870.)
 	{

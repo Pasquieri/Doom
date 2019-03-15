@@ -6,7 +6,7 @@
 /*   By: mpasquie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/03 13:45:50 by mpasquie          #+#    #+#             */
-/*   Updated: 2019/03/13 16:53:11 by cpalmier         ###   ########.fr       */
+/*   Updated: 2019/03/15 16:37:54 by cpalmier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,9 @@ void		key_valid_menu(t_env *env)
 
 int			trig_press(t_env *env)
 {
+	int	i;
+
+	i = 0;
 	if ((env->key[0] || env->key[1] || env->key[2] || env->key[13])
 			&& !env->menu)
 		deplacements(env);
