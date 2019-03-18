@@ -6,7 +6,7 @@
 /*   By: mpasquie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/03 13:44:10 by mpasquie          #+#    #+#             */
-/*   Updated: 2019/03/03 15:11:47 by mpasquie         ###   ########.fr       */
+/*   Updated: 2019/03/18 17:47:51 by cpalmier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 void	rotation_regard(t_env *env)
 {
-	if (env->key[69] || env->key[27])
+	if (env->key[78])
 		env->d_regard += 1;
-	else if (env->key[78] || env->key[24])
+	else if (env->key[69])
 		env->d_regard -= 1;
 	if (env->key[123])
 		env->d_regard += 5;

@@ -6,7 +6,7 @@
 /*   By: mpasquie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/01 20:37:03 by mpasquie          #+#    #+#             */
-/*   Updated: 2019/03/13 17:13:33 by cpalmier         ###   ########.fr       */
+/*   Updated: 2019/03/18 18:52:05 by cpalmier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,7 @@ void		open_menu(t_env *env)
 		color_menu.map4_color = color_menu.red_color;
 	else if (env->menu_select == 6)
 		color_menu.exit_color = color_menu.red_color;
-	mlx_put_image_to_window(env->mlx, env->win, env->text[0].img, 0, 0);
+	mlx_put_image_to_window(env->mlx, env->win, env->text[20].img, 0, 0);
 	if (env->map_entree == 0)
 		affiche_menu_valide(env, &color_menu);
 	else

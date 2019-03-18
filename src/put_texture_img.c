@@ -6,11 +6,23 @@
 /*   By: cpalmier <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/28 16:49:23 by cpalmier          #+#    #+#             */
-/*   Updated: 2019/03/13 18:24:07 by cpalmier         ###   ########.fr       */
+/*   Updated: 2019/03/18 17:32:59 by cpalmier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/wolf3d.h"
+
+char	luminosite(int text, int coef)
+{
+	int		tmp;
+
+	if (text < 0)
+		text = text + 256;
+	tmp = text - coef;
+	tmp < 0 ? tmp = 0 : tmp;
+	tmp > 255 ? tmp = 255 : tmp;
+	return ((char)tmp);
+}
 
 void	put_texture_img(t_env *env, double h_percue, int y, t_mlx *text)
 {
@@ -30,8 +42,8 @@ void	put_texture_img(t_env *env, double h_percue, int y, t_mlx *text)
 	i = 4 * env->img_x + y * env->m[0].s_l;
 	j = 4 * (int)(text->width * pourcent_x / 100)
 		+ (int)(text->height * pourcent_y / 100) * text->s_l;
-	env->m[0].img_str[i] = text->img_str[j];
-	env->m[0].img_str[i + 1] = text->img_str[j + 1];
-	env->m[0].img_str[i + 2] = text->img_str[j + 2];
+	env->m[0].img_str[i] = luminosite((int)text->img_str[j], env->lum);
+	env->m[0].img_str[i + 1] = luminosite(text->img_str[j + 1], env->lum);
+	env->m[0].img_str[i + 2] = luminosite(text->img_str[j + 2], env->lum);
 	env->m[0].img_str[i + 3]  = (char)0;
 }

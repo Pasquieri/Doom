@@ -6,7 +6,7 @@
 /*   By: mpasquie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/03 13:41:46 by mpasquie          #+#    #+#             */
-/*   Updated: 2019/03/15 16:42:48 by cpalmier         ###   ########.fr       */
+/*   Updated: 2019/03/18 17:57:46 by cpalmier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 int			key_press(int key, t_env *env)
 {
 	env->key[key] = 1;
-	if (env->key[40]) // pour afficher le gun // touche k
+	if (env->key[40] && !env->menu) // pour afficher le gun // touche k
 	{
 		if (env->inv.gun == 0)
 			env->inv.gun = 1;
@@ -23,7 +23,7 @@ int			key_press(int key, t_env *env)
 			env->inv.gun = 0;
 	//	env->key[40] = 0; //pour ne pas boucler ds key_apply pas necessaire ici
 	}                     // jusque la !
-	if (env->key[37] && env->inv.gun == 1) // pour tirer un coup de feu : key l
+	if (env->key[37] && env->inv.gun == 1 && !env->menu) // pour tirer un coup de feu : key l
 	{
 		print_gun(env, 3);
 		mlx_put_image_to_window(env->mlx,env->win,env->m[0].img, 0,0);

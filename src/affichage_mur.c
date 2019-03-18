@@ -6,7 +6,7 @@
 /*   By: cpalmier <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/21 17:27:02 by cpalmier          #+#    #+#             */
-/*   Updated: 2019/03/15 21:42:42 by cpalmier         ###   ########.fr       */
+/*   Updated: 2019/03/18 18:53:38 by cpalmier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,25 +28,30 @@ static int		affichage_ciel(double h_percue, t_env *env, int x, float y)
 	{
 		pourcent_y = (100. * y) / (870.);
 		i = 4 * x + y * env->m[0].s_l;
-		j = 4 * (int)(env->text[2].width * pourcent_x / 100)
-			+ (int)(env->text[2].height * (pourcent_y + (100 - (env->h_regard
-								* 100 / 870.))) / 100) * env->text[2].s_l;
-		env->m[0].img_str[i] = env->text[2].img_str[j];
-		env->m[0].img_str[i + 1] = env->text[2].img_str[j + 1];
-		env->m[0].img_str[i + 2] = env->text[2].img_str[j + 2];
+		j = 4 * (int)(env->text[22].width * pourcent_x / 100)
+			+ (int)(env->text[22].height * (pourcent_y + (100 - (env->h_regard
+								* 100 / 870.))) / 100) * env->text[22].s_l;
+		env->m[0].img_str[i] = env->text[22].img_str[j];
+		env->m[0].img_str[i + 1] = env->text[22].img_str[j + 1];
+		env->m[0].img_str[i + 2] = env->text[22].img_str[j + 2];
+		//env->m[0].img_str[i] = luminosite(env->text[22].img_str[j], env->lum);
+		//env->m[0].img_str[i + 1] = luminosite(env->text[22].img_str[j + 1], env->lum);
+		//env->m[0].img_str[i + 2] = luminosite(env->text[22].img_str[j + 2], env->lum);
 	}
 	return (y - 1);
 }
 
-static int		affichage_wall(float y, t_env *env, double h_percue)
+/*static void		affichage_sol(t_env *env, int x, int y)
 {
-	float	lim;
+	int	i;
 
-	lim = env->lim_sol;
-	while (++y < lim && y < 870.)
-		put_texture_img(env, h_percue, y, &env->text[env->wall_nb + 1]); // +1 car 0 = mur or text[0] = menu
-	return (y);
-}
+	i = 4 * x + y * env->m[0].s_l;
+	env->m[0].img_str[i] = luminosite(env->rgb[7].b, env->lum);
+	env->m[0].img_str[i + 1] = luminosite(env->rgb[7].g, env->lum);
+	env->m[0].img_str[i + 2] = luminosite(env->rgb[7].r, env->lum);
+	env->m[0].img_str[i + 3] = (char)env->rgb[7].a;
+}*/
+
 
 static void		affichage(double h_percue, t_env *env, int x)
 {
@@ -55,25 +60,15 @@ static void		affichage(double h_percue, t_env *env, int x)
 
 	y = 0;
 	y = affichage_ciel(h_percue, env, x, y);
-//	lim = (env->h_regard + (h_percue / 2));
+	//	lim = (env->h_regard + (h_percue / 2));
 	lim = env->lim_sol;
-/*	if (env->orientation == 1)
-	{
-		while (a >= 0. && a < 180. && ++y < lim && y < 870.)
-			put_texture_img(env, h_percue, y, &env->text[1]);
-		while (!(a >= 0. && a < 180.) && ++y < lim && y < 870.)
-			put_texture_img(env, h_percue, y, &env->text[2]);
-	}
-	else if (env->orientation == 2)
-	{
-		while (a >= 90. && a < 270. && ++y < lim && y < 870.)
-			put_texture_img(env, h_percue, y, &env->text[3]);
-		while (!(a >= 90. && a < 270.) && ++y < lim && y < 870.)
-			put_texture_img(env, h_percue, y, &env->text[4]);
-	}*/
-	y = affichage_wall(y, env, h_percue);
-	y -= 2;
+	while (++y < lim && y < 870.) // affichage_mur
+	//	put_texture_img(env, h_percue, y, &env->text[env->wall_nb + 1]);
+		put_texture_img(env, h_percue, y, &env->text[1]);
+                        // +1 car 0 = mur or text[0] = menu
+	y--;
 	while (++y < 870.)
+	//	affichage_sol(env, x, y);
 		put_pxl_img(env, x, y, 7);
 }
 
@@ -111,9 +106,8 @@ void			affichage_mur(t_env *env)
 		dist = detection_mur(env);
 		dist = dist * cos((a - env->d_regard) * M_PI / 180);
 		h_percue = env->d_ecran * (env->h_mur / dist);
-		//h_percue = env->d_ecran * (env->coef / dist);
+		env->lum = dist * 255 / env->lum_int;
 		env->h_ref = env->d_ecran * (env->coef / dist);
-		//env->lim_sol = env->h_regard + ((env->d_ecran * (env->coef / dist)) / 2);
 		env->lim_sol = env->h_regard + (env->h_ref / 2);
 		env->img_x = x;
 		affichage(h_percue, env, x);

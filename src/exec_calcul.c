@@ -6,7 +6,7 @@
 /*   By: mpasquie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/03 13:40:29 by mpasquie          #+#    #+#             */
-/*   Updated: 2019/03/15 16:45:06 by cpalmier         ###   ########.fr       */
+/*   Updated: 2019/03/18 18:51:22 by cpalmier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ void		clean_img(t_env *env)
 static void	init_sprite(t_env *env)
 {
 	env->sp[0].img = mlx_xpm_file_to_image(env->mlx,
-			"textures/column.XPM", &env->sp[0].width, &env->sp[0].height);
+			"textures/12-column.XPM", &env->sp[0].width, &env->sp[0].height);
 	env->sp[0].img_str = mlx_get_data_addr(env->sp[0].img, &env->sp[0].bpp,
 			&env->sp[0].s_l, &env->sp[0].end);
 	env->sp[1].img = mlx_xpm_file_to_image(env->mlx, "textures/gun.XPM",
@@ -79,7 +79,7 @@ void	exec_calcul(t_env *env, int d_regard, int init)
 	color_case(env);
 	quadrillage(env); // enlever pour plus de lisibilite sur la mini map
 	print_cercle(env);
-//	printf("sprite : {%c,%c,%c,%c}\n", env->sp[1].img_str[400],env->sp[1].img_str[401],env->sp[1].img_str[402],env->sp[1].img_str[403]);
+	//	printf("sprite : {%c,%c,%c,%c}\n", env->sp[1].img_str[400],env->sp[1].img_str[401],env->sp[1].img_str[402],env->sp[1].img_str[403]);
 	if (env->inv.gun == 1)
 		print_gun(env, 2);
 	mlx_put_image_to_window(env->mlx, env->win, env->m[0].img, 0, 0);

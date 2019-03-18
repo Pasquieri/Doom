@@ -6,7 +6,7 @@
 /*   By: cpalmier <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/21 18:13:49 by cpalmier          #+#    #+#             */
-/*   Updated: 2019/03/15 21:40:35 by cpalmier         ###   ########.fr       */
+/*   Updated: 2019/03/18 18:47:13 by cpalmier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,22 @@
 # include <math.h>
 # include <fcntl.h>
 # include <stdio.h>
+
+# define FLOOR 0
+# define W_GRAY 1
+# define W_WHITE 2
+# define W_BLUE 3
+# define W_G_TAB 4
+# define W_W_TAB 5
+# define W_B_TAB 6
+# define DOOR 7
+# define GRID 8
+# define WIN 9
+# define BEGIN 10
+# define END 11
+# define COLUMN 12
+# define BANANA 13
+# define MONKEY 14
 
 typedef struct	s_coord
 {
@@ -119,12 +135,14 @@ typedef struct	s_env
 	int		h_regard;
 	float	lim;
 	int		orientation; // cardinaux texture a supp
+	int		lum;
+	int		lum_int;
 
 	float	lim_sol; // test
 	double	h_ref; // test
 
 	t_rgb	rgb[10];
-	t_mlx	text[10];
+	t_mlx	text[25];
 	t_mlx	sp[2];
 	t_inv	inv;
 	_Bool	key[604];
@@ -175,6 +193,7 @@ int				verif_ver(t_env *env, t_coord *coord);
 int				intersection_horizontal(t_env *env, t_coord *cd);
 int				intersection_vertical(t_env *env, t_coord *cd);
 void			affichage_mur(t_env *env);
+char			luminosite(int text, int coef);
 void			deplacements(t_env *env);
 void			depla_horizontal(t_env *env, int key);
 void			depla_vertical(t_env *env, int key);
