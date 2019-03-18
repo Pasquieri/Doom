@@ -6,7 +6,7 @@
 /*   By: cpalmier <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/21 17:41:52 by cpalmier          #+#    #+#             */
-/*   Updated: 2019/03/01 18:33:09 by cpalmier         ###   ########.fr       */
+/*   Updated: 2019/03/18 19:34:51 by cpalmier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,11 @@ static int	check_wall(double xa, double ya, t_env *env)
 
 	x = env->perso_x + round(xa);
 	y = env->perso_y + round(ya);
-	if (env->tab[y / env->coef][x / env->coef] != 0
-			&& env->tab[(y + 1) / env->coef][x / env->coef] != 0
-			&& env->tab[(y - 1) / env->coef][x / env->coef] != 0
-			&& env->tab[y / env->coef][(x + 1) / env->coef] != 0
-			&& env->tab[y / env->coef][(x - 1) / env->coef] != 0)
+	if (env->tab[y / env->coef][x / env->coef] >= 7
+			&& env->tab[(y + 1) / env->coef][x / env->coef] >= 7
+			&& env->tab[(y - 1) / env->coef][x / env->coef] >= 7
+			&& env->tab[y / env->coef][(x + 1) / env->coef] >= 7
+			&& env->tab[y / env->coef][(x - 1) / env->coef] >= 7)
 		return (0);
 	else
 		return (1);

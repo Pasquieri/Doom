@@ -6,7 +6,7 @@
 /*   By: cpalmier <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/21 17:53:44 by cpalmier          #+#    #+#             */
-/*   Updated: 2019/03/11 19:49:32 by cpalmier         ###   ########.fr       */
+/*   Updated: 2019/03/18 19:27:37 by cpalmier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void		color_case(t_env *env)
 		i = -1;
 		while (++i < env->x)
 		{
-			if (env->tab[j][i] == 0)
+			if (env->tab[j][i] >= 0 && env->tab[j][i] <= 6)
 			{
 				y = j * env->coef - 1;
 				while (++y < (j * env->coef + env->coef))
