@@ -6,7 +6,7 @@
 /*   By: mpasquie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/03 13:40:29 by mpasquie          #+#    #+#             */
-/*   Updated: 2019/03/18 18:51:22 by cpalmier         ###   ########.fr       */
+/*   Updated: 2019/03/19 17:09:29 by cpalmier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ void		clean_img(t_env *env)
 	}
 }
 
-static void	init_sprite(t_env *env)
+/*static void	init_sprite(t_env *env)
 {
 	env->sp[0].img = mlx_xpm_file_to_image(env->mlx,
 			"textures/12-column.XPM", &env->sp[0].width, &env->sp[0].height);
@@ -52,7 +52,7 @@ static void	init_sprite(t_env *env)
 	env->sp[1].img_str = mlx_get_data_addr(env->sp[1].img, &env->sp[1].bpp,
 			&env->sp[1].s_l, &env->sp[1].end);
 //	printf("arme : width : %d, height : %d\n", env->sp[1].width, env->sp[1].height);
-}
+}*/
 
 static void	init_var(t_env *env, int d_regard)
 {

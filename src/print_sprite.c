@@ -6,7 +6,7 @@
 /*   By: cpalmier <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/13 18:30:27 by cpalmier          #+#    #+#             */
-/*   Updated: 2019/03/15 16:03:22 by cpalmier         ###   ########.fr       */
+/*   Updated: 2019/03/19 17:09:38 by cpalmier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,13 +27,13 @@ void	print_gun(t_env *env, int k)
 		while (++x <= (600 + (env->inv.lim_gun[k] - env->inv.lim_gun[k - 1])))
 		{
 			i = 4 * x + y * env->m[0].s_l;
-			j = 4 * (x - 600 + env->inv.lim_gun[k - 1]) + (y - 665) * env->sp[1].s_l; // + lim[0] pour decaler la limite d'avant pour la bonne image
-			if (env->sp[1].img_str[j + 3] != -1) // si pas transparent
+			j = 4 * (x - 600 + env->inv.lim_gun[k - 1]) + (y - 665) * env->sp[5].s_l; // + lim[0] pour decaler la limite d'avant pour la bonne image
+			if (env->sp[5].img_str[j + 3] != -1) // si pas transparent
 			{
-				env->m[0].img_str[i] = env->sp[1].img_str[j]; // sp[1] == gun
-				env->m[0].img_str[i + 1] = env->sp[1].img_str[j + 1];
-				env->m[0].img_str[i + 2] = env->sp[1].img_str[j + 2];
-				env->m[0].img_str[i + 3] = env->sp[1].img_str[j + 3];
+				env->m[0].img_str[i] = env->sp[5].img_str[j]; // sp[1] == gun
+				env->m[0].img_str[i + 1] = env->sp[5].img_str[j + 1];
+				env->m[0].img_str[i + 2] = env->sp[5].img_str[j + 2];
+				env->m[0].img_str[i + 3] = env->sp[5].img_str[j + 3];
 			}
 		}
 	}

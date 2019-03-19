@@ -6,7 +6,7 @@
 /*   By: cpalmier <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/21 17:27:02 by cpalmier          #+#    #+#             */
-/*   Updated: 2019/03/18 19:10:57 by cpalmier         ###   ########.fr       */
+/*   Updated: 2019/03/19 17:22:43 by cpalmier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,6 @@ static void		affichage(double h_percue, t_env *env, int x)
 	lim = env->lim_sol;
 	while (++y < lim && y < 870.) // affichage_mur
 		put_texture_img(env, h_percue, y, &env->text[env->wall_nb]);
-	//	put_texture_img(env, h_percue, y, &env->text[1]);
 	y--;
 	while (++y < 870.)
 	//	affichage_sol(env, x, y);

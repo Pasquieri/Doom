@@ -6,7 +6,7 @@
 /*   By: cpalmier <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/21 17:41:52 by cpalmier          #+#    #+#             */
-/*   Updated: 2019/03/18 19:34:51 by cpalmier         ###   ########.fr       */
+/*   Updated: 2019/03/19 17:48:08 by cpalmier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,8 +85,8 @@ void		depla_vertical(t_env *env, int key)
 		angle = angle + 360;
 	angle = angle % 360;
 	init_coef(angle, &coef_x, &coef_y);
-	xa = fabs(cos(angle * M_PI / 180) * 2);
-	ya = fabs(sin(angle * M_PI / 180) * 2);
+	xa = fabs(cos(angle * M_PI / 180) * (30. / (float)env->x)); //
+	ya = fabs(sin(angle * M_PI / 180) * (30. / (float)env->x)); //
 	xa = xa * coef_x;
 	ya = ya * coef_y;
 	if (check_wall(xa, ya, env) == 0)
@@ -113,8 +113,8 @@ void		depla_horizontal(t_env *env, int key)
 	angle = angle % 360;
 	init_coef(angle, &coef_x, &coef_y);
 	angle = init_angle(angle);
-	xa = fabs(cos(angle * M_PI / 180) * 2);
-	ya = fabs(sin(angle * M_PI / 180) * 2);
+	xa = fabs(cos(angle * M_PI / 180) * (30. / (float)env->x));//
+	ya = fabs(sin(angle * M_PI / 180) * (30. / (float)env->x));//
 	xa = xa * coef_x;
 	ya = ya * coef_y;
 	if (check_wall(xa, ya, env) == 0)

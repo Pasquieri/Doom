@@ -6,7 +6,7 @@
 /*   By: cpalmier <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/01 20:15:32 by cpalmier          #+#    #+#             */
-/*   Updated: 2019/03/18 18:54:34 by cpalmier         ###   ########.fr       */
+/*   Updated: 2019/03/19 16:48:09 by cpalmier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,15 +30,25 @@ void	init_texture(t_env *env)
 		"textures/3-wall_bleu.XPM", &env->text[3].width, &env->text[3].height);
 	env->text[3].img_str = mlx_get_data_addr(env->text[3].img,
 		&env->text[3].bpp, &env->text[3].s_l, &env->text[3].end);
+
 	env->text[4].img = mlx_xpm_file_to_image(env->mlx,
-		"textures/4-5-6-van_gogh.XPM", &env->text[4].width, &env->text[4].height);
+		"textures/1-mur_gray.XPM", &env->text[4].width, &env->text[4].height);
 	env->text[4].img_str = mlx_get_data_addr(env->text[4].img,
 		&env->text[4].bpp, &env->text[4].s_l, &env->text[4].end);
+	env->text[5].img = mlx_xpm_file_to_image(env->mlx,
+		"textures/2-wall_white.XPM", &env->text[5].width, &env->text[5].height);
+	env->text[5].img_str = mlx_get_data_addr(env->text[5].img,
+		&env->text[5].bpp, &env->text[5].s_l, &env->text[5].end);
+	env->text[6].img = mlx_xpm_file_to_image(env->mlx,
+		"textures/3-wall_bleu.XPM", &env->text[6].width, &env->text[6].height);
+	env->text[6].img_str = mlx_get_data_addr(env->text[6].img,
+		&env->text[6].bpp, &env->text[6].s_l, &env->text[6].end);
 
 	env->text[7].img = mlx_xpm_file_to_image(env->mlx,
 		"textures/7-door.XPM", &env->text[7].width, &env->text[7].height);
 	env->text[7].img_str = mlx_get_data_addr(env->text[7].img,
 		&env->text[7].bpp, &env->text[7].s_l, &env->text[7].end);
+
 	env->text[8].img = mlx_xpm_file_to_image(env->mlx,
 		"textures/8-grid.XPM", &env->text[8].width, &env->text[8].height);
 	env->text[8].img_str = mlx_get_data_addr(env->text[8].img,
@@ -47,7 +57,6 @@ void	init_texture(t_env *env)
 		"textures/9-window.XPM", &env->text[9].width, &env->text[9].height);
 	env->text[9].img_str = mlx_get_data_addr(env->text[9].img,
 		&env->text[9].bpp, &env->text[9].s_l, &env->text[9].end);
-
 	env->text[12].img = mlx_xpm_file_to_image(env->mlx,
 		"textures/12-column.XPM", &env->text[12].width, &env->text[12].height);
 	env->text[12].img_str = mlx_get_data_addr(env->text[12].img,
