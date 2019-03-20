@@ -6,7 +6,7 @@
 /*   By: cpalmier <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/21 18:13:49 by cpalmier          #+#    #+#             */
-/*   Updated: 2019/03/20 15:17:20 by mpasquie         ###   ########.fr       */
+/*   Updated: 2019/03/20 15:34:48 by cpalmier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,6 +104,19 @@ typedef struct	s_inv
 	_Bool	gun;
 }				t_inv;
 
+typedef struct	s_spr t_spr;
+struct	s_spr
+{
+	t_coord	coord;
+	int		nb;
+	t_spr	*next;
+};
+
+typedef struct	s_lst
+{
+	t_spr	*first;
+}				t_lst;
+
 typedef struct	s_env
 {
 	void	*mlx;
@@ -146,6 +159,10 @@ typedef struct	s_env
 	t_rgb	rgb[10];
 	t_mlx	text[25];
 	t_mlx	sp[7];
+	t_spr	*spr;
+	t_lst	first;
+	int		sprite_on;
+
 	t_inv	inv;
 	_Bool	key[604];
 }				t_env;
@@ -201,4 +218,10 @@ void			init_texture(t_env *env);
 void			init_sprite(t_env *env);
 void			print_sprite(t_env *env);
 void			print_gun(t_env *env, int k);
+//void			lstadd(t_spr **first, t_spr *nw);
+
+int				wall_line(char *str, t_env *env);
+int				wall_row(char *str, int nb_char, t_env *env);
+int				compte_char(char *str, char c);
+
 #endif
