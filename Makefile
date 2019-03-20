@@ -5,13 +5,14 @@ SRC = src/ft_trace_seg.c src/main.c src/put_pxl_img.c\
 	  src/detection_mur.c src/detection_mur_horizontal.c\
 	  src/detection_mur_vertical.c src/affichage_mur.c\
 	  src/deplacements.c src/deplacements_extra.c src/menu_open.c\
-	  src/error_message.c src/fill_tab_extra.c src/wall_row.c\
+	  src/error_message.c src/tablen.c src/verif_char.c src/wall_row.c\
 	  src/wall_line.c src/fill_tab.c src/malloc_tab.c\
 	  src/verif_valeur.c src/recup_info_player.c src/check_file.c\
-	  src/check_open_map.c src/pars.c src/put_texture_img.c\
+	  src/check_open_map.c src/pars_init.c src/re_pars.c src/put_texture_img.c\
 	  src/init_texture.c src/motion_notify.c src/win_init.c\
 	  src/rotation_regard.c src/key_apply.c src/trig_press.c\
-	  src/menu_arrow.c src/exec_calcul.c src/print_sprite.c
+	  src/menu_arrow.c src/exec_calcul.c src/print_sprite.c\
+	  src/init_sprite.c
 
 HEADER = -Ilibft -Iinclude
 

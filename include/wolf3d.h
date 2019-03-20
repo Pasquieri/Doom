@@ -6,7 +6,7 @@
 /*   By: cpalmier <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/21 18:13:49 by cpalmier          #+#    #+#             */
-/*   Updated: 2019/03/18 18:47:13 by cpalmier         ###   ########.fr       */
+/*   Updated: 2019/03/20 15:17:20 by mpasquie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,10 +26,10 @@
 # define W_G_TAB 4
 # define W_W_TAB 5
 # define W_B_TAB 6
-# define DOOR 7
-# define GRID 8
-# define WIN 9
-# define BEGIN 10
+# define WIN 7
+# define BEGIN 8
+# define DOOR 9
+# define GRID 10
 # define END 11
 # define COLUMN 12
 # define BANANA 13
@@ -118,8 +118,10 @@ typedef struct	s_env
 	double	angle;
 	int		perso_x;
 	int		perso_y;
+	int		perso_r;
 	int		x_init; // a supp
 	int		y_init; // a supp 
+	int		musique;
 
 	int		detail;
 	int		menu;
@@ -143,12 +145,12 @@ typedef struct	s_env
 
 	t_rgb	rgb[10];
 	t_mlx	text[25];
-	t_mlx	sp[2];
+	t_mlx	sp[7];
 	t_inv	inv;
 	_Bool	key[604];
-	int		musique;
 }				t_env;
 
+int				recup_music(char *str);
 void			exec_calcul(t_env *env, int d_regard, int init);
 void			arrow_menu(t_env *env);
 void			key_invalid_menu(t_env *env);
@@ -168,9 +170,6 @@ int				verif_valeur(char *str, t_env *env);
 int				malloc_tab(t_env *env);
 int				fill_tab(int fd, t_env *env);
 int				tablen(char **str);
-int				wall_line(char *str, t_env *env);
-int				wall_row(char *str, int nb_char, t_env *env);
-int				compte_char(char *str, char c);
 int				verif_char(char *str, t_env *env);
 int				error_message(int num, t_env *env);
 void			open_menu(t_env *env);
@@ -199,6 +198,7 @@ void			depla_horizontal(t_env *env, int key);
 void			depla_vertical(t_env *env, int key);
 void			put_texture_img(t_env *env, double h_per, int y, t_mlx *text);
 void			init_texture(t_env *env);
+void			init_sprite(t_env *env);
 void			print_sprite(t_env *env);
 void			print_gun(t_env *env, int k);
 #endif
