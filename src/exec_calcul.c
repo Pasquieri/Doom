@@ -57,7 +57,7 @@ void		clean_img(t_env *env)
 static void	init_var(t_env *env, int d_regard)
 {
 	env->map_entree = 0;
-	env->coef = 400 / (env->x + env->y);
+	env->coef = 200 / (env->x);
 	init_env(env);
 	env->d_regard = d_regard;
 
@@ -75,8 +75,9 @@ void	exec_calcul(t_env *env, int d_regard, int init)
 	if (init == 1)
 		init_var(env, d_regard);
 	clean_img(env);
-	affichage_mur(env);
 	color_case(env);
+	affichage_mur(env);
+	
 	quadrillage(env); // enlever pour plus de lisibilite sur la mini map
 	print_cercle(env);
 	//	printf("sprite : {%c,%c,%c,%c}\n", env->sp[1].img_str[400],env->sp[1].img_str[401],env->sp[1].img_str[402],env->sp[1].img_str[403]);

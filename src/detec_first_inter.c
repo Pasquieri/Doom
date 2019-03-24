@@ -12,25 +12,13 @@
 
 #include "../include/wolf3d.h"
 
-static int	verif_horizontal(float y2, t_env *env)
-{
-	int	j;
-
-	j = (y2) / env->coef;
-	if (j != (env->perso_y / env->coef))
-		return (1);
-	j = (y2 - 1) / env->coef;
-	if (j != (env->perso_y / env->coef))
-		return (1);
-	else
-		return (0);
-}
-
 int			intersection_horizontal(t_env *env, t_coord *cd)
 {
-	int		ya;
-	int		coef_y;
-	int		coef_x;
+	double		ya;
+	double		coef_y;
+	double		coef_x;
+	double		tmp;
+
 
 	ya = 0;
 	cd->x = env->perso_x;
@@ -38,58 +26,41 @@ int			intersection_horizontal(t_env *env, t_coord *cd)
 	coef_y = 1;
 	coef_x = 1;
 	if (env->angle > 0. && env->angle < 180.)
-		coef_y = -1;
-	if (env->angle > 180. && env->angle < 360.)
-		coef_x = -1;
-	while (ya < env->coef && (cd->x < env->lim && cd->x > 0.)
-			&& (cd->y < env->lim && cd->y > 0.))
-	{
-		cd->y = env->perso_y + (ya * coef_y);
-		cd->x = env->perso_x + ((ya * coef_x) / tan(env->angle * M_PI / 180));
-		if (verif_horizontal(cd->y, env) == 1)
-			return (0);
-		ya++;
-	}
-	return (1);
-}
-
-static int	verif_vertical(float x2, t_env *env)
-{
-	int	i;
-
-	i = (x2) / env->coef;
-	if (i != (env->perso_x / env->coef))
-		return (1);
-	i = (x2 - 1) / env->coef;
-	if (i != (env->perso_x / env->coef))
-		return (1);
+		ya =  fmod(env->perso_y, env->coef);
 	else
-		return (0);
+		ya =  env->coef - fmod(env->perso_y, env->coef);
+	if (env->angle > 0 && env->angle < 180)
+		cd->y -= ya;
+	else
+		cd->y += ya;
+	tmp = (ya / tan(env->angle * M_PI / 180));
+	if (!(env->angle > 0 && env->angle < 180))
+		cd->x -= tmp;
+	else
+		cd->x += tmp;
+	return (1);
 }
 
 int			intersection_vertical(t_env *env, t_coord *cd)
 {
-	int		xa;
-	int		coef_x;
-	int		coef_y;
+	double		xa;
+	double		coef_x;
+	double		coef_y;
 
-	xa = 0;
+	xa = 0.;
 	cd->x = env->perso_x;
 	cd->y = env->perso_y;
-	coef_x = 1;
-	coef_y = 1;
+	coef_x = 1.;
+	coef_y = 1.;
 	if (env->angle > 90. && env->angle < 270.)
-		coef_x = -1;
+		coef_x = -1.;
 	if (!(env->angle > 90. && env->angle < 270.))
-		coef_y = -1;
-	while (xa < env->coef && (cd->x < env->lim && cd->x > 0.)
-			&& (cd->y < env->lim && cd->y > 0.))
-	{
-		cd->x = env->perso_x + (xa * coef_x);
-		cd->y = env->perso_y + ((xa * coef_y) * tan(env->angle * M_PI / 180));
-		if (verif_vertical(cd->x, env) == 1)
-			return (0);
-		xa++;
-	}
+		coef_y = -1.;
+	if (env->angle > 90. && env->angle < 270.)
+		xa =  fmod(env->perso_x, env->coef);
+	else
+		xa =  env->coef - fmod(env->perso_x, env->coef);
+	cd->x += xa * coef_x;
+	cd->y = env->perso_y + ((xa * coef_y) * tan(env->angle * M_PI / 180));
 	return (1);
 }

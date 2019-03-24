@@ -24,9 +24,9 @@ static int	fill_condition_1(t_fill *fill, t_env *env)
 
 	i = 0;
 	fill->tmp = ft_strsplit(fill->line, ' ');
-	if (tablen(fill->tmp) < env->perso_x)
+	if (tablen(fill->tmp) < (int)env->perso_x)
 		i = 14;
-	if (fill->tmp[env->perso_x][0] == '0')
+	if (fill->tmp[(int)env->perso_x][0] == '0')
 		i = 15;
 	fill->k = tablen(fill->tmp);
 	while (fill->k >= 0)

@@ -12,6 +12,14 @@
 
 #include "../include/wolf3d.h"
 
+static void	init_coord_lim(t_coord *coord, int lim)
+{
+	coord->x > lim ? coord->x = lim : coord->x;
+	coord->y > lim ? coord->y = lim : coord->y;
+	coord->x < 0 ? coord->x = 0 : coord->x;
+	coord->y < 0 ? coord->y = 0 : coord->y;
+}
+
 static void	init_coord(t_env *env, t_coord *coord, int coef, int cas)
 {
 	int	a;
@@ -42,6 +50,10 @@ static void	init_coord(t_env *env, t_coord *coord, int coef, int cas)
 int			init_var_hor(t_env *env, double *ya, double *xa, t_coord *coord1)
 {
 	int	coef;
+	t_coord	perso;
+
+	perso.x = env->perso_x;
+	perso.y = env->perso_y;
 
 	coef = 1;
 	if (env->angle == 0. || env->angle == 180.)
@@ -79,14 +91,6 @@ int			coef_hor(t_env *env, int *coef_x, int *coef_y)
 	return (0);
 }
 
-static void	init_coord_lim(t_coord *coord, int lim)
-{
-	coord->x > lim ? coord->x = lim : coord->x;
-	coord->y > lim ? coord->y = lim : coord->y;
-	coord->x < 0 ? coord->x = 0 : coord->x;
-	coord->y < 0 ? coord->y = 0 : coord->y;
-}
-
 int			verif_hor(t_env *env, t_coord *coord)
 {
 	int	i;
@@ -106,12 +110,6 @@ int			verif_hor(t_env *env, t_coord *coord)
 		if (env->tab[j][i] >= 0 && env->tab[j][i] <= 6) // verif si c'est pas un mur : 0 = mur 1 = rien // exclure 0 quand new parceur
 		{
 			coord->nb = env->tab[j][i]; // pour les differents types de murs
-			return (1);
-		}
-		j = ((coord->y) + 1) / env->coef;
-		if (env->tab[j][i] >= 0 && env->tab[j][i] <= 6)
-		{
-			coord->nb = env->tab[j][i];
 			return (1);
 		}
 		j = ((coord->y) - 1) / env->coef;

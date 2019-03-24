@@ -34,6 +34,7 @@ static double	ft_distance(t_coord coord1, t_coord coord2, t_env *env)
 		env->coord_mur = coord1;
 		env->wall_nb = coord1.nb;
 		ft_round(&coord1);
+		ft_round(&perso);
 		ft_trace_seg(env, perso, coord1);
 		return (dist1);
 	}
@@ -43,6 +44,7 @@ static double	ft_distance(t_coord coord1, t_coord coord2, t_env *env)
 		env->coord_mur = coord2;
 		env->wall_nb = coord2.nb;
 		ft_round(&coord2);
+		ft_round(&perso);
 		ft_trace_seg(env, perso, coord2);
 		return (dist2);
 	}
@@ -56,19 +58,20 @@ double			detection_mur(t_env *env)
 	t_coord	coord2;
 	t_coef	coef;
 
-	init_var_hor(env, &ya, &xa, &coord1);
-	coef_hor(env, &coef.x, &coef.y);
-	while (verif_hor(env, &coord1) == 0)
-	{
-		coord1.x += (xa * coef.x);
-		coord1.y += (ya * coef.y);
-	}
+	
 	init_var_ver(env, &ya, &xa, &coord2);
 	coef_ver(env, &coef.x, &coef.y);
 	while (verif_ver(env, &coord2) == 0)
 	{
 		coord2.x += (xa * coef.x);
 		coord2.y += (ya * coef.y);
+	}
+	init_var_hor(env, &ya, &xa, &coord1);
+	coef_hor(env, &coef.x, &coef.y);
+	while (verif_hor(env, &coord1) == 0)
+	{
+		coord1.x += (xa * coef.x);
+		coord1.y += (ya * coef.y);
 	}
 	return (ft_distance(coord1, coord2, env));
 }

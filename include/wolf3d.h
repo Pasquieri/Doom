@@ -37,8 +37,8 @@
 
 typedef struct	s_coord
 {
-	float	x;
-	float	y;
+	double	x;
+	double	y;
 	int		nb;
 }				t_coord;
 
@@ -129,11 +129,12 @@ typedef struct	s_env
 	int		**tab;
 	int		d_regard;
 	double	angle;
-	int		perso_x;
-	int		perso_y;
+	double	perso_x;
+	double	perso_y;
 	int		perso_r;
 	int		x_init; // a supp
 	int		y_init; // a supp 
+	double	vitesse;
 	int		musique;
 
 	int		detail;
