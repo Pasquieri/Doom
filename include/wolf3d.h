@@ -34,6 +34,8 @@
 # define COLUMN 12
 # define BANANA 13
 # define MONKEY 14
+# define W_HEIGHT 870
+# define W_WIDTH 1200
 
 typedef struct	s_coord
 {
@@ -224,5 +226,7 @@ void			print_gun(t_env *env, int k);
 int				wall_line(char *str, t_env *env);
 int				wall_row(char *str, int nb_char, t_env *env);
 int				compte_char(char *str, char c);
+void	affichage_sol(double h_percue, t_env *env);
+
 
 #endif

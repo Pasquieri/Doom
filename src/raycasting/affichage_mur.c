@@ -11,7 +11,6 @@
 /* ************************************************************************** */
 
 #include "../../include/wolf3d.h"
-#include <stdio.h>
 
 static int		affichage_ciel(double h_percue, t_env *env, int x, float y)
 {
@@ -23,14 +22,15 @@ static int		affichage_ciel(double h_percue, t_env *env, int x, float y)
 
 	y = -1;
 	lim = (env->h_regard - (h_percue / 2));
+	//printf("limite ciel:%f\n",lim);
 	pourcent_x = (100. * x) / env->nb_colonne;
-	while (++y < lim && y < 870.)
+	while (++y < lim && y < W_HEIGHT)
 	{
-		pourcent_y = (100. * y) / (870.);
+		pourcent_y = (100. * y) / (W_HEIGHT);
 		i = 4 * x + y * env->m[0].s_l;
 		j = 4 * (int)(env->text[22].width * pourcent_x / 100)
 			+ (int)(env->text[22].height * (pourcent_y + (100 - (env->h_regard
-								* 100 / 870.))) / 100) * env->text[22].s_l;
+								* 100 / W_HEIGHT))) / 100) * env->text[22].s_l;
 		env->m[0].img_str[i] = env->text[22].img_str[j];
 		env->m[0].img_str[i + 1] = env->text[22].img_str[j + 1];
 		env->m[0].img_str[i + 2] = env->text[22].img_str[j + 2];
@@ -40,17 +40,6 @@ static int		affichage_ciel(double h_percue, t_env *env, int x, float y)
 	}
 	return (y - 1);
 }
-
-/*static void		affichage_sol(t_env *env, int x, int y)
-{
-	int	i;
-
-	i = 4 * x + y * env->m[0].s_l;
-	env->m[0].img_str[i] = luminosite(env->rgb[7].b, env->lum);
-	env->m[0].img_str[i + 1] = luminosite(env->rgb[7].g, env->lum);
-	env->m[0].img_str[i + 2] = luminosite(env->rgb[7].r, env->lum);
-	env->m[0].img_str[i + 3] = (char)env->rgb[7].a;
-}*/
 
 
 static void		affichage(double h_percue, t_env *env, int x)
@@ -66,10 +55,11 @@ static void		affichage(double h_percue, t_env *env, int x)
 		put_texture_img(env, h_percue, y, &env->text[env->wall_nb]);
 	y--;
 
-/*	while (++y < 870.)
-	//	affichage_sol(env, x, y);
+	
+	while (++y < 870.)
 		put_pxl_img(env, x, y, 7);
-*/}
+	//affichage_sol(h_percue, env);
+}
 
 static double	verif_angle(double angle)
 {
@@ -100,7 +90,7 @@ void			affichage_mur(t_env *env)
 	x = 0;
 	while (x < (env->nb_colonne))
 	{
-	//	printf("%d\n",x );
+
 		env->angle = a;
 		env->angle = verif_angle(env->angle);
 		dist = detection_mur(env);

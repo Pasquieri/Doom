@@ -10,21 +10,21 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/wolf3d.h"
+#include "../../include/wolf3d.h"
 
 int		motion_notify(int x, int y, t_env *env)
 {
 	if (env->menu == 1)
 		return (0);
-	if (x > W_WIDTH || x < 0 || y > W_HEIGHT || y < 0)
+	if (x > 1200 || x < 0 || y > 870 || y < 0)
 		return (0);
 	if (x > 650)
 		env->d_regard -= 1;
 	else if (x < 550)
 		env->d_regard += 1;
-	if (y < 250 && (env->h_regard < (W_HEIGHT / 2 + 200)))
+	if (y < 250 && (env->h_regard < (870 / 2 + 200)))
 		env->h_regard += 2;
-	else if (y > 620 && (env->h_regard > (W_HEIGHT / 2 - 200)))
+	else if (y > 620 && (env->h_regard > (870 / 2 - 200)))
 		env->h_regard -= 2;
 	env->d_regard = env->d_regard % 360;
 	if (env->d_regard < 0)

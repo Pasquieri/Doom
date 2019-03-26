@@ -1,7 +1,6 @@
 NAME = wolf3D
 
 SRC = src/main.c\
-	  src/motion_notify.c \
 	  \
 	  src/initialize/init_sprite.c\
 	  src/initialize/init_texture.c\
@@ -12,6 +11,7 @@ SRC = src/main.c\
 	  src/action/deplacements_extra.c\
 	  src/action/key_apply.c\
 	  src/action/rotation_regard.c\
+	  src/action/motion_notify.c \
 	  \
 	  src/menu/menu_open.c\
 	  src/menu/menu_arrow.c\

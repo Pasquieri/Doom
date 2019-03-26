@@ -11,5 +11,12 @@
 /* ************************************************************************** */
 
 #include "../../include/wolf3d.h"
+#include <stdio.h>
 
 
+void	affichage_sol(double h_percue, t_env *env)
+{
+	double lim
+	lim = (env->h_regard - (h_percue / 2));
+	//printf("lim sol:%f", lim)
+}
