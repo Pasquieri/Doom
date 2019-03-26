@@ -1,18 +1,47 @@
 NAME = wolf3D
 
-SRC = src/ft_trace_seg.c src/main.c src/put_pxl_img.c\
-	  src/mini_map.c src/init_env.c src/detec_first_inter.c\
-	  src/detection_mur.c src/detection_mur_horizontal.c\
-	  src/detection_mur_vertical.c src/affichage_mur.c\
-	  src/deplacements.c src/deplacements_extra.c src/menu_open.c\
-	  src/error_message.c src/wall_row.c\
-	  src/wall_line.c src/fill_tab.c src/malloc_tab.c\
-	  src/verif_valeur.c src/recup_info_player.c src/check_file.c\
-	  src/check_open_map.c src/pars.c src/put_texture_img.c\
-	  src/init_texture.c src/motion_notify.c src/win_init.c\
-	  src/rotation_regard.c src/key_apply.c src/trig_press.c\
-	  src/menu_arrow.c src/exec_calcul.c src/print_sprite.c\
-	  src/init_sprite.c src/fill_tab_extra.c
+SRC = src/main.c\
+	  src/motion_notify.c \
+	  \
+	  src/initialize/init_sprite.c\
+	  src/initialize/init_texture.c\
+	  src/initialize/init_env.c\
+	  src/initialize/win_init.c\
+	  \
+	  src/action/deplacements.c\
+	  src/action/deplacements_extra.c\
+	  src/action/key_apply.c\
+	  src/action/rotation_regard.c\
+	  \
+	  src/menu/menu_open.c\
+	  src/menu/menu_arrow.c\
+	  src/menu/trig_press.c\
+	  \
+	  src/parser/error_message.c\
+	  src/parser/wall_row.c\
+	  src/parser/wall_line.c\
+	  src/parser/fill_tab.c\
+	  src/parser/malloc_tab.c\
+	  src/parser/verif_valeur.c\
+	  src/parser/recup_info_player.c\
+	  src/parser/check_file.c\
+	  src/parser/check_open_map.c\
+	  src/parser/pars.c\
+	  src/parser/fill_tab_extra.c\
+	  \
+      src/put_image/ft_trace_seg.c\
+      src/put_image/put_pxl_img.c\
+	  src/put_image/mini_map.c\
+	  src/put_image/put_texture_img.c\
+	  src/put_image/print_sprite.c\
+	  \
+	  src/raycasting/detec_first_inter.c\
+	  src/raycasting/detection_mur.c\
+	  src/raycasting/detection_mur_horizontal.c\
+	  src/raycasting/detection_mur_vertical.c\
+	  src/raycasting/affichage_mur.c\
+	  src/raycasting/exec_calcul.c 
+	   
 
 HEADER = -Ilibft -Iinclude
 
