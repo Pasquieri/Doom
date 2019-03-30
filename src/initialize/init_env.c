@@ -6,7 +6,7 @@
 /*   By: cpalmier <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/21 17:48:45 by cpalmier          #+#    #+#             */
-/*   Updated: 2019/03/19 17:33:52 by cpalmier         ###   ########.fr       */
+/*   Updated: 2019/03/30 17:52:39 by cpalmier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,5 +26,5 @@ void	init_env(t_env *env)
 	env->h_regard = 870 / 2;
 	env->lim = env->x * env->coef - (env->coef / 2);
 	env->lum_int = 220;
-	env->vitesse = 2;
+	env->vitesse = 0.5;
 }
